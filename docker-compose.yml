@@ -1,0 +1,113 @@
+name: fincore-ledger
+services:
+  postgres:
+    image: postgres:16.4-alpine
+    environment:
+      POSTGRES_DB: fincore
+      POSTGRES_USER: fincore
+      POSTGRES_PASSWORD: fincore
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./infrastructure/postgres-init.sql:/docker-entrypoint-initdb.d/10-fincore.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fincore -d fincore"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  redis:
+    image: redis:7.4-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build:
+      context: ./apps/api
+    environment:
+      FINCORE_ENV: development
+      FINCORE_DATABASE_URL: postgresql+psycopg://fincore:fincore@postgres:5432/fincore
+      FINCORE_REDIS_URL: redis://redis:6379/0
+      FINCORE_JWT_SECRET: ${FINCORE_JWT_SECRET:-development-only-secret-change-before-production-2026}
+      FINCORE_CORS_ORIGINS: http://localhost:3000
+      FINCORE_PROVIDER_MODE: development
+      FINCORE_SEED_ON_START: ${FINCORE_SEED_ON_START:-true}
+    command: ["./entrypoint.sh"]
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health/live', timeout=2)"]
+      interval: 10s
+      timeout: 3s
+      retries: 20
+    restart: unless-stopped
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    environment:
+      FINCORE_ENV: development
+      FINCORE_DATABASE_URL: postgresql+psycopg://fincore:fincore@postgres:5432/fincore
+      FINCORE_REDIS_URL: redis://redis:6379/0
+      FINCORE_JWT_SECRET: ${FINCORE_JWT_SECRET:-development-only-secret-change-before-production-2026}
+      FINCORE_PROVIDER_MODE: development
+    depends_on:
+      api:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  beat:
+    build:
+      context: .
+      dockerfile: apps/worker/Dockerfile
+    command: ["celery", "-A", "fincore.worker.celery_app.celery_app", "beat", "--loglevel=INFO"]
+    environment:
+      FINCORE_ENV: development
+      FINCORE_DATABASE_URL: postgresql+psycopg://fincore:fincore@postgres:5432/fincore
+      FINCORE_REDIS_URL: redis://redis:6379/0
+      FINCORE_JWT_SECRET: ${FINCORE_JWT_SECRET:-development-only-secret-change-before-production-2026}
+      FINCORE_PROVIDER_MODE: development
+    depends_on:
+      api:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  web:
+    build:
+      context: ./apps/web
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
+    ports:
+      - "3000:3000"
+    depends_on:
+      api:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://localhost:3000/login').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 4s
+      retries: 20
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  redis_data:

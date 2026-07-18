@@ -1,0 +1,97 @@
+# Verification Record
+
+Verification was performed on July 19, 2026 (Asia/Karachi) in the project workspace.
+
+## Backend
+
+Commands:
+
+```bash
+cd apps/api
+python -m ruff check .
+python -m mypy fincore --no-incremental --cache-dir=NUL
+python -m pytest -q
+python -m compileall -q fincore
+```
+
+Results:
+
+- Ruff: all checks passed.
+- MyPy: no issues found in 39 source files.
+- Pytest: 16 passed, with one upstream `StarletteDeprecationWarning` from the globally installed FastAPI/TestClient stack.
+- Compile check: completed successfully.
+
+Notes:
+
+- Test fixtures use in-memory SQLite with `StaticPool` to avoid local file-lock collisions and stale SQLite journal files.
+- The local Python environment had newer global packages than the pinned requirements. The source was adjusted for current `ruff`, `mypy`, and `pydantic-settings` compatibility.
+
+## Frontend
+
+The checked-out `apps/web/node_modules` directory was a stale partial install and locked by Windows. To verify from a clean dependency tree, the web source was copied to a temporary directory without `node_modules`, using the repository lockfile after replacing internal registry URLs with `https://registry.npmjs.org/`.
+
+Commands:
+
+```bash
+cd <temporary clean web copy>
+npm ci --registry=https://registry.npmjs.org/
+npm run lint
+npm run typecheck
+NEXT_TELEMETRY_DISABLED=1 npm run build
+npm audit --audit-level=moderate
+```
+
+Results:
+
+- npm install: 364 packages installed, 0 vulnerabilities.
+- ESLint: passed with zero warnings.
+- TypeScript: passed.
+- Next.js production build: passed; 12 static routes generated.
+- npm audit: 0 vulnerabilities.
+
+## SDK
+
+The SDK lockfile was updated to use the public npm registry.
+
+```bash
+cd packages/sdk
+npm ci --registry=https://registry.npmjs.org/
+npm run typecheck
+npm run build
+npm audit --audit-level=moderate
+```
+
+Results:
+
+- npm install: 3 packages installed, 0 vulnerabilities.
+- TypeScript type check: passed.
+- SDK build: passed.
+- npm audit: 0 vulnerabilities.
+
+## Live Smoke
+
+A SQLite demo database was migrated and seeded, then the FastAPI server and production Next.js server were started locally.
+
+Commands:
+
+```bash
+cd apps/api
+FINCORE_DATABASE_URL=sqlite:///.../fincore-demo.db alembic upgrade head
+FINCORE_DATABASE_URL=sqlite:///.../fincore-demo.db python -m fincore.seed
+uvicorn fincore.main:app --host 127.0.0.1 --port 8000
+
+cd apps/web
+npm run start -- -p 3000
+
+FINCORE_API_URL=http://127.0.0.1:8000/api/v1 python scripts/smoke_test.py
+```
+
+Results:
+
+- `GET /health/live` returned `{"status":"live"}`.
+- Smoke test passed with one customer wallet and an available balance of `1850000` PKR minor units.
+- Screenshots in `docs/screenshots/` were captured from the locally running app with seeded demo data.
+
+## Docker
+
+Docker was not installed in this workspace (`docker` was not recognized), so Docker image builds and Docker Compose startup could not be executed locally. The Compose file and Dockerfiles remain included, and GitHub Actions runs source-level backend, frontend, and SDK checks.
