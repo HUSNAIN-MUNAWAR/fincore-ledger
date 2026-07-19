@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import json
+from collections.abc import Callable
 from datetime import UTC, datetime, timedelta
+from typing import Any, TypeVar, cast
 
 import httpx
 from sqlalchemy import delete, select
@@ -18,6 +20,12 @@ from fincore.db.models import (
 from fincore.db.session import SessionLocal
 from fincore.services.reconciliation import run_wallet_reconciliation
 from fincore.worker.celery_app import celery_app
+
+TaskFunc = TypeVar("TaskFunc", bound=Callable[..., object])
+
+
+def typed_task(*args: Any, **kwargs: Any) -> Callable[[TaskFunc], TaskFunc]:
+    return cast(Callable[[TaskFunc], TaskFunc], celery_app.task(*args, **kwargs))
 
 
 def _encoded_event(event: OutboxEvent) -> bytes:
@@ -72,7 +80,7 @@ def _attempt_delivery(
     return False
 
 
-@celery_app.task(name="fincore.dispatch_outbox")  # type: ignore[untyped-decorator]
+@typed_task(name="fincore.dispatch_outbox")
 def dispatch_outbox() -> dict[str, int]:
     delivered = 0
     failed = 0
@@ -128,7 +136,7 @@ def dispatch_outbox() -> dict[str, int]:
     return {"delivered": delivered, "failed": failed}
 
 
-@celery_app.task(name="fincore.reconcile_wallets")  # type: ignore[untyped-decorator]
+@typed_task(name="fincore.reconcile_wallets")
 def reconcile_wallets() -> dict[str, int]:
     with SessionLocal() as db:
         run = run_wallet_reconciliation(db)
@@ -136,7 +144,7 @@ def reconcile_wallets() -> dict[str, int]:
         return {"matched": run.matched_count, "mismatches": run.mismatch_count}
 
 
-@celery_app.task(name="fincore.cleanup_idempotency")  # type: ignore[untyped-decorator]
+@typed_task(name="fincore.cleanup_idempotency")
 def cleanup_idempotency() -> dict[str, int]:
     with SessionLocal() as db:
         result = db.execute(
