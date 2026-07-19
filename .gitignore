@@ -3,12 +3,13 @@
 .codex-venv/
 __pycache__/
 .pytest_cache/
-.mypy_cache/
+.mypy_cache*/
 .ruff_cache/
 *.pyc
 *.db
 *.db-journal
 *.sqlite3
+*.sqlite
 node_modules/
 node_modules.partial*/
 .next/
@@ -18,3 +19,7 @@ dist/
 coverage/
 .DS_Store
 *.log
+data/raw/
+data/processed/
+playwright-report/
+test-results/

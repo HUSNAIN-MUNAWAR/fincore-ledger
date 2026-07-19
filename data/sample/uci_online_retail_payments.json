@@ -1,0 +1,654 @@
+{
+  "dataset": {
+    "title": "Online Retail",
+    "publisher": "UCI Machine Learning Repository",
+    "official_source_url": "https://archive.ics.uci.edu/dataset/352/online%2Bretail",
+    "sample_source_url": "https://raw.githubusercontent.com/IBM/customer_pos_analytics/master/data/Online%20Retail%20Sample.csv",
+    "license": "Creative Commons Attribution 4.0 International (CC BY 4.0)",
+    "citation": "Chen, D. (2015). Online Retail [Dataset]. UCI Machine Learning Repository. https://doi.org/10.24432/C5BW33.",
+    "prepared_on": "2026-07-19",
+    "source_file_sha256": "1ee13078fb549514226e07edaa01f08023e0f602930da78c4f5b44b820ff6a66"
+  },
+  "selection": {
+    "source_rows_read": 3066,
+    "payments_selected": 18,
+    "refunds_selected": 1,
+    "skipped_rows": 0,
+    "rules": [
+      "Aggregate positive line items by InvoiceNo into wallet payments.",
+      "Keep invoice, country, anonymized customer identifier, totals, and a short item sample.",
+      "Represent matching cancellation invoices as refunds when a selected payment exists for the same customer.",
+      "Exclude raw descriptions beyond the short item sample and ignore missing CustomerID rows."
+    ]
+  },
+  "payments": [
+    {
+      "payment_reference": "UCI-536365",
+      "invoice_no": "536365",
+      "invoice_date": "01/12/2010 08:26:00",
+      "customer_id": "17850",
+      "country": "United Kingdom",
+      "amount_minor": 13912,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536365",
+      "line_count": 7,
+      "item_count": 40,
+      "sample_line_items": [
+        {
+          "stock_code": "85123A",
+          "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+          "quantity": 6,
+          "unit_price_gbp": "2.55"
+        },
+        {
+          "stock_code": "71053",
+          "description": "WHITE METAL LANTERN",
+          "quantity": 6,
+          "unit_price_gbp": "3.39"
+        },
+        {
+          "stock_code": "84406B",
+          "description": "CREAM CUPID HEARTS COAT HANGER",
+          "quantity": 8,
+          "unit_price_gbp": "2.75"
+        },
+        {
+          "stock_code": "84029G",
+          "description": "KNITTED UNION FLAG HOT WATER BOTTLE",
+          "quantity": 6,
+          "unit_price_gbp": "3.39"
+        },
+        {
+          "stock_code": "84029E",
+          "description": "RED WOOLLY HOTTIE WHITE HEART.",
+          "quantity": 6,
+          "unit_price_gbp": "3.39"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536366",
+      "invoice_no": "536366",
+      "invoice_date": "01/12/2010 08:28:00",
+      "customer_id": "17850",
+      "country": "United Kingdom",
+      "amount_minor": 2220,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536366",
+      "line_count": 2,
+      "item_count": 12,
+      "sample_line_items": [
+        {
+          "stock_code": "22633",
+          "description": "HAND WARMER UNION JACK",
+          "quantity": 6,
+          "unit_price_gbp": "1.85"
+        },
+        {
+          "stock_code": "22632",
+          "description": "HAND WARMER RED POLKA DOT",
+          "quantity": 6,
+          "unit_price_gbp": "1.85"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536367",
+      "invoice_no": "536367",
+      "invoice_date": "01/12/2010 08:34:00",
+      "customer_id": "13047",
+      "country": "United Kingdom",
+      "amount_minor": 27873,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536367",
+      "line_count": 12,
+      "item_count": 83,
+      "sample_line_items": [
+        {
+          "stock_code": "84879",
+          "description": "ASSORTED COLOUR BIRD ORNAMENT",
+          "quantity": 32,
+          "unit_price_gbp": "1.69"
+        },
+        {
+          "stock_code": "22745",
+          "description": "POPPY'S PLAYHOUSE BEDROOM",
+          "quantity": 6,
+          "unit_price_gbp": "2.1"
+        },
+        {
+          "stock_code": "22748",
+          "description": "POPPY'S PLAYHOUSE KITCHEN",
+          "quantity": 6,
+          "unit_price_gbp": "2.1"
+        },
+        {
+          "stock_code": "22749",
+          "description": "FELTCRAFT PRINCESS CHARLOTTE DOLL",
+          "quantity": 8,
+          "unit_price_gbp": "3.75"
+        },
+        {
+          "stock_code": "22310",
+          "description": "IVORY KNITTED MUG COSY",
+          "quantity": 6,
+          "unit_price_gbp": "1.65"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536368",
+      "invoice_no": "536368",
+      "invoice_date": "01/12/2010 08:34:00",
+      "customer_id": "13047",
+      "country": "United Kingdom",
+      "amount_minor": 7005,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536368",
+      "line_count": 4,
+      "item_count": 15,
+      "sample_line_items": [
+        {
+          "stock_code": "22960",
+          "description": "JAM MAKING SET WITH JARS",
+          "quantity": 6,
+          "unit_price_gbp": "4.25"
+        },
+        {
+          "stock_code": "22913",
+          "description": "RED COAT RACK PARIS FASHION",
+          "quantity": 3,
+          "unit_price_gbp": "4.95"
+        },
+        {
+          "stock_code": "22912",
+          "description": "YELLOW COAT RACK PARIS FASHION",
+          "quantity": 3,
+          "unit_price_gbp": "4.95"
+        },
+        {
+          "stock_code": "22914",
+          "description": "BLUE COAT RACK PARIS FASHION",
+          "quantity": 3,
+          "unit_price_gbp": "4.95"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536369",
+      "invoice_no": "536369",
+      "invoice_date": "01/12/2010 08:35:00",
+      "customer_id": "13047",
+      "country": "United Kingdom",
+      "amount_minor": 1785,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536369",
+      "line_count": 1,
+      "item_count": 3,
+      "sample_line_items": [
+        {
+          "stock_code": "21756",
+          "description": "BATH BUILDING BLOCK WORD",
+          "quantity": 3,
+          "unit_price_gbp": "5.95"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536370",
+      "invoice_no": "536370",
+      "invoice_date": "01/12/2010 08:45:00",
+      "customer_id": "12583",
+      "country": "France",
+      "amount_minor": 85586,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536370",
+      "line_count": 20,
+      "item_count": 449,
+      "sample_line_items": [
+        {
+          "stock_code": "22728",
+          "description": "ALARM CLOCK BAKELIKE PINK",
+          "quantity": 24,
+          "unit_price_gbp": "3.75"
+        },
+        {
+          "stock_code": "22727",
+          "description": "ALARM CLOCK BAKELIKE RED",
+          "quantity": 24,
+          "unit_price_gbp": "3.75"
+        },
+        {
+          "stock_code": "22726",
+          "description": "ALARM CLOCK BAKELIKE GREEN",
+          "quantity": 12,
+          "unit_price_gbp": "3.75"
+        },
+        {
+          "stock_code": "21724",
+          "description": "PANDA AND BUNNIES STICKER SHEET",
+          "quantity": 12,
+          "unit_price_gbp": "0.85"
+        },
+        {
+          "stock_code": "21883",
+          "description": "STARS GIFT TAPE",
+          "quantity": 24,
+          "unit_price_gbp": "0.65"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536371",
+      "invoice_no": "536371",
+      "invoice_date": "01/12/2010 09:00:00",
+      "customer_id": "13748",
+      "country": "United Kingdom",
+      "amount_minor": 20400,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536371",
+      "line_count": 1,
+      "item_count": 80,
+      "sample_line_items": [
+        {
+          "stock_code": "22086",
+          "description": "PAPER CHAIN KIT 50'S CHRISTMAS",
+          "quantity": 80,
+          "unit_price_gbp": "2.55"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536372",
+      "invoice_no": "536372",
+      "invoice_date": "01/12/2010 09:01:00",
+      "customer_id": "17850",
+      "country": "United Kingdom",
+      "amount_minor": 2220,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536372",
+      "line_count": 2,
+      "item_count": 12,
+      "sample_line_items": [
+        {
+          "stock_code": "22632",
+          "description": "HAND WARMER RED POLKA DOT",
+          "quantity": 6,
+          "unit_price_gbp": "1.85"
+        },
+        {
+          "stock_code": "22633",
+          "description": "HAND WARMER UNION JACK",
+          "quantity": 6,
+          "unit_price_gbp": "1.85"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536373",
+      "invoice_no": "536373",
+      "invoice_date": "01/12/2010 09:02:00",
+      "customer_id": "17850",
+      "country": "United Kingdom",
+      "amount_minor": 25986,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536373",
+      "line_count": 16,
+      "item_count": 88,
+      "sample_line_items": [
+        {
+          "stock_code": "85123A",
+          "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+          "quantity": 6,
+          "unit_price_gbp": "2.55"
+        },
+        {
+          "stock_code": "71053",
+          "description": "WHITE METAL LANTERN",
+          "quantity": 6,
+          "unit_price_gbp": "3.39"
+        },
+        {
+          "stock_code": "84406B",
+          "description": "CREAM CUPID HEARTS COAT HANGER",
+          "quantity": 8,
+          "unit_price_gbp": "2.75"
+        },
+        {
+          "stock_code": "20679",
+          "description": "EDWARDIAN PARASOL RED",
+          "quantity": 6,
+          "unit_price_gbp": "4.95"
+        },
+        {
+          "stock_code": "37370",
+          "description": "RETRO COFFEE MUGS ASSORTED",
+          "quantity": 6,
+          "unit_price_gbp": "1.06"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536374",
+      "invoice_no": "536374",
+      "invoice_date": "01/12/2010 09:09:00",
+      "customer_id": "15100",
+      "country": "United Kingdom",
+      "amount_minor": 35040,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536374",
+      "line_count": 1,
+      "item_count": 32,
+      "sample_line_items": [
+        {
+          "stock_code": "21258",
+          "description": "VICTORIAN SEWING BOX LARGE",
+          "quantity": 32,
+          "unit_price_gbp": "10.95"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536375",
+      "invoice_no": "536375",
+      "invoice_date": "01/12/2010 09:32:00",
+      "customer_id": "17850",
+      "country": "United Kingdom",
+      "amount_minor": 25986,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536375",
+      "line_count": 16,
+      "item_count": 88,
+      "sample_line_items": [
+        {
+          "stock_code": "85123A",
+          "description": "WHITE HANGING HEART T-LIGHT HOLDER",
+          "quantity": 6,
+          "unit_price_gbp": "2.55"
+        },
+        {
+          "stock_code": "71053",
+          "description": "WHITE METAL LANTERN",
+          "quantity": 6,
+          "unit_price_gbp": "3.39"
+        },
+        {
+          "stock_code": "84406B",
+          "description": "CREAM CUPID HEARTS COAT HANGER",
+          "quantity": 8,
+          "unit_price_gbp": "2.75"
+        },
+        {
+          "stock_code": "20679",
+          "description": "EDWARDIAN PARASOL RED",
+          "quantity": 6,
+          "unit_price_gbp": "4.95"
+        },
+        {
+          "stock_code": "37370",
+          "description": "RETRO COFFEE MUGS ASSORTED",
+          "quantity": 6,
+          "unit_price_gbp": "1.06"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536376",
+      "invoice_no": "536376",
+      "invoice_date": "01/12/2010 09:32:00",
+      "customer_id": "15291",
+      "country": "United Kingdom",
+      "amount_minor": 32880,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536376",
+      "line_count": 2,
+      "item_count": 112,
+      "sample_line_items": [
+        {
+          "stock_code": "22114",
+          "description": "HOT WATER BOTTLE TEA AND SYMPATHY",
+          "quantity": 48,
+          "unit_price_gbp": "3.45"
+        },
+        {
+          "stock_code": "21733",
+          "description": "RED HANGING HEART T-LIGHT HOLDER",
+          "quantity": 64,
+          "unit_price_gbp": "2.55"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536377",
+      "invoice_no": "536377",
+      "invoice_date": "01/12/2010 09:34:00",
+      "customer_id": "17850",
+      "country": "United Kingdom",
+      "amount_minor": 2220,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536377",
+      "line_count": 2,
+      "item_count": 12,
+      "sample_line_items": [
+        {
+          "stock_code": "22632",
+          "description": "HAND WARMER RED POLKA DOT",
+          "quantity": 6,
+          "unit_price_gbp": "1.85"
+        },
+        {
+          "stock_code": "22633",
+          "description": "HAND WARMER UNION JACK",
+          "quantity": 6,
+          "unit_price_gbp": "1.85"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536378",
+      "invoice_no": "536378",
+      "invoice_date": "01/12/2010 09:37:00",
+      "customer_id": "14688",
+      "country": "United Kingdom",
+      "amount_minor": 44498,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536378",
+      "line_count": 19,
+      "item_count": 454,
+      "sample_line_items": [
+        {
+          "stock_code": "22386",
+          "description": "JUMBO BAG PINK POLKADOT",
+          "quantity": 10,
+          "unit_price_gbp": "1.95"
+        },
+        {
+          "stock_code": "85099C",
+          "description": "JUMBO  BAG BAROQUE BLACK WHITE",
+          "quantity": 10,
+          "unit_price_gbp": "1.95"
+        },
+        {
+          "stock_code": "21033",
+          "description": "JUMBO BAG CHARLIE AND LOLA TOYS",
+          "quantity": 10,
+          "unit_price_gbp": "2.95"
+        },
+        {
+          "stock_code": "20723",
+          "description": "STRAWBERRY CHARLOTTE BAG",
+          "quantity": 10,
+          "unit_price_gbp": "0.85"
+        },
+        {
+          "stock_code": "84997B",
+          "description": "RED 3 PIECE RETROSPOT CUTLERY SET",
+          "quantity": 12,
+          "unit_price_gbp": "3.75"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536380",
+      "invoice_no": "536380",
+      "invoice_date": "01/12/2010 09:41:00",
+      "customer_id": "17809",
+      "country": "United Kingdom",
+      "amount_minor": 3480,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536380",
+      "line_count": 1,
+      "item_count": 24,
+      "sample_line_items": [
+        {
+          "stock_code": "22961",
+          "description": "JAM MAKING SET PRINTED",
+          "quantity": 24,
+          "unit_price_gbp": "1.45"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536381",
+      "invoice_no": "536381",
+      "invoice_date": "01/12/2010 09:41:00",
+      "customer_id": "15311",
+      "country": "United Kingdom",
+      "amount_minor": 44998,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536381",
+      "line_count": 35,
+      "item_count": 198,
+      "sample_line_items": [
+        {
+          "stock_code": "22139",
+          "description": "RETROSPOT TEA SET CERAMIC 11 PC",
+          "quantity": 23,
+          "unit_price_gbp": "4.25"
+        },
+        {
+          "stock_code": "84854",
+          "description": "GIRLY PINK TOOL SET",
+          "quantity": 5,
+          "unit_price_gbp": "4.95"
+        },
+        {
+          "stock_code": "22411",
+          "description": "JUMBO SHOPPER VINTAGE RED PAISLEY",
+          "quantity": 10,
+          "unit_price_gbp": "1.95"
+        },
+        {
+          "stock_code": "82567",
+          "description": "AIRLINE LOUNGE,METAL SIGN",
+          "quantity": 2,
+          "unit_price_gbp": "2.1"
+        },
+        {
+          "stock_code": "21672",
+          "description": "WHITE SPOT RED CERAMIC DRAWER KNOB",
+          "quantity": 6,
+          "unit_price_gbp": "1.25"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536382",
+      "invoice_no": "536382",
+      "invoice_date": "01/12/2010 09:45:00",
+      "customer_id": "16098",
+      "country": "United Kingdom",
+      "amount_minor": 43060,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536382",
+      "line_count": 12,
+      "item_count": 134,
+      "sample_line_items": [
+        {
+          "stock_code": "10002",
+          "description": "INFLATABLE POLITICAL GLOBE",
+          "quantity": 12,
+          "unit_price_gbp": "0.85"
+        },
+        {
+          "stock_code": "21912",
+          "description": "VINTAGE SNAKES & LADDERS",
+          "quantity": 8,
+          "unit_price_gbp": "3.75"
+        },
+        {
+          "stock_code": "21832",
+          "description": "CHOCOLATE CALCULATOR",
+          "quantity": 12,
+          "unit_price_gbp": "1.65"
+        },
+        {
+          "stock_code": "22411",
+          "description": "JUMBO SHOPPER VINTAGE RED PAISLEY",
+          "quantity": 10,
+          "unit_price_gbp": "1.95"
+        },
+        {
+          "stock_code": "22379",
+          "description": "RECYCLING BAG RETROSPOT",
+          "quantity": 10,
+          "unit_price_gbp": "2.1"
+        }
+      ]
+    },
+    {
+      "payment_reference": "UCI-536384",
+      "invoice_no": "536384",
+      "invoice_date": "01/12/2010 09:53:00",
+      "customer_id": "18074",
+      "country": "United Kingdom",
+      "amount_minor": 48960,
+      "currency": "GBP",
+      "description": "UCI Online Retail invoice 536384",
+      "line_count": 13,
+      "item_count": 190,
+      "sample_line_items": [
+        {
+          "stock_code": "82484",
+          "description": "WOOD BLACK BOARD ANT WHITE FINISH",
+          "quantity": 3,
+          "unit_price_gbp": "6.45"
+        },
+        {
+          "stock_code": "84755",
+          "description": "COLOUR GLASS T-LIGHT HOLDER HANGING",
+          "quantity": 48,
+          "unit_price_gbp": "0.65"
+        },
+        {
+          "stock_code": "22464",
+          "description": "HANGING METAL HEART LANTERN",
+          "quantity": 12,
+          "unit_price_gbp": "1.65"
+        },
+        {
+          "stock_code": "21324",
+          "description": "HANGING MEDINA LANTERN SMALL",
+          "quantity": 6,
+          "unit_price_gbp": "2.95"
+        },
+        {
+          "stock_code": "22457",
+          "description": "NATURAL SLATE HEART CHALKBOARD",
+          "quantity": 12,
+          "unit_price_gbp": "2.95"
+        }
+      ]
+    }
+  ],
+  "refunds": [
+    {
+      "payment_reference": "UCI-536381",
+      "cancellation_invoice_no": "C536383",
+      "cancellation_date": "01/12/2010 09:49:00",
+      "amount_minor": 465,
+      "currency": "GBP",
+      "reason": "UCI cancellation invoice C536383"
+    }
+  ]
+}

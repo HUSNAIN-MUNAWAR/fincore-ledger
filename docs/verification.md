@@ -1,6 +1,23 @@
 # Verification Record
 
-Verification was performed on July 19, 2026 (Asia/Karachi) in the project workspace.
+Verification was refreshed on July 19, 2026 (Asia/Karachi) in the project workspace after integrating the UCI Online Retail public dataset demo.
+
+## Dataset Workflow
+
+Commands:
+
+```bash
+python scripts/prepare_uci_online_retail_sample.py --skip-download
+cd apps/api
+python -m pytest tests/test_public_dataset_seed.py -q
+```
+
+Results:
+
+- Processed sample generated at `data/sample/uci_online_retail_payments.json`.
+- Sample contains 18 invoice-derived GBP payments and 1 cancellation-derived refund.
+- Dataset seed test passed: 2 passed, with one upstream `StarletteDeprecationWarning`.
+- Fresh migrated SQLite seed result: 18 payments created, 1 refund created, 1 withdrawal created, 2 wallet projections matched, 0 reconciliation mismatches.
 
 ## Backend
 
@@ -9,7 +26,7 @@ Commands:
 ```bash
 cd apps/api
 python -m ruff check .
-python -m mypy fincore --no-incremental --cache-dir=NUL
+python -m mypy fincore/public_dataset_seed.py --follow-imports=skip --ignore-missing-imports --no-incremental
 python -m pytest -q
 python -m compileall -q fincore
 ```
@@ -17,8 +34,8 @@ python -m compileall -q fincore
 Results:
 
 - Ruff: all checks passed.
-- MyPy: no issues found in 39 source files.
-- Pytest: 16 passed, with one upstream `StarletteDeprecationWarning` from the globally installed FastAPI/TestClient stack.
+- MyPy: no issues found in `fincore/public_dataset_seed.py` with import following skipped; the full `python -m mypy fincore --no-incremental` command timed out locally after 10 minutes without producing diagnostics.
+- Pytest: 18 passed, with one upstream `StarletteDeprecationWarning` from the globally installed FastAPI/TestClient stack.
 - Compile check: completed successfully.
 
 Notes:
@@ -51,7 +68,7 @@ Results:
 
 ## SDK
 
-The SDK lockfile was updated to use the public npm registry.
+The SDK package was verified from its existing lockfile.
 
 ```bash
 cd packages/sdk
@@ -78,19 +95,19 @@ Commands:
 cd apps/api
 FINCORE_DATABASE_URL=sqlite:///.../fincore-demo.db alembic upgrade head
 FINCORE_DATABASE_URL=sqlite:///.../fincore-demo.db python -m fincore.seed
-uvicorn fincore.main:app --host 127.0.0.1 --port 8000
+uvicorn fincore.main:app --host 127.0.0.1 --port 8012
 
 cd apps/web
-npm run start -- -p 3000
+npm run start -- -p 3001
 
-FINCORE_API_URL=http://127.0.0.1:8000/api/v1 python scripts/smoke_test.py
+FINCORE_API_URL=http://127.0.0.1:8012/api/v1 python scripts/smoke_test.py
 ```
 
 Results:
 
 - `GET /health/live` returned `{"status":"live"}`.
-- Smoke test passed with one customer wallet and an available balance of `1850000` PKR minor units.
-- Screenshots in `docs/screenshots/` were captured from the locally running app with seeded demo data.
+- Smoke test passed against the public dataset seed with one customer wallet and an available balance of `50465` GBP minor units after the smoke transaction.
+- Screenshots in `docs/screenshots/` were captured from the locally running app with UCI Online Retail payment, refund, payout, webhook, ledger, and reconciliation data.
 
 ## Docker
 
