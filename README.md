@@ -156,6 +156,20 @@ The seed creates public-dataset-labeled organizations, GBP wallets, deposits, ca
 
 The dataset does not represent FinCore customers, production money movement, private bank records, payment cards, credentials, or a regulated deployment. It is retail invoice data mapped into the FinCore ledger model for engineering demonstration. More details are in [docs/DATASET.md](docs/DATASET.md).
 
+### Measured ledger runtime evidence
+
+Run the real seed, double-entry, idempotency, and reconciliation path locally:
+
+```bash
+make runtime-evidence
+```
+
+This uses a temporary SQLite database and the committed UCI sample, then writes
+persisted journal traces, a CSV, an MP4 animation, a poster, and a hash-addressed
+summary under [`docs/runtime_evidence/`](docs/runtime_evidence/). The evidence
+does not claim regulated payments, production PostgreSQL concurrency, or real
+provider settlement.
+
 All seeded identities use the development-only password `FinCore-Dev-2026!`.
 
 | Persona | Email | Intended access |

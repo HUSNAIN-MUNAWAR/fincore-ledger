@@ -1,4 +1,4 @@
-.PHONY: install api-test api-lint api-type web-install web-lint web-type web-build migrate seed run-api verify compose-up compose-down
+.PHONY: install api-test api-lint api-type web-install web-lint web-type web-build migrate seed runtime-evidence run-api verify compose-up compose-down
 
 install:
 	python -m pip install -r apps/api/requirements-dev.txt
@@ -29,6 +29,9 @@ migrate:
 
 seed:
 	cd apps/api && python -m fincore.seed
+
+runtime-evidence:
+	python scripts/generate_runtime_evidence.py
 
 run-api:
 	cd apps/api && uvicorn fincore.main:app --reload --host 0.0.0.0 --port 8000

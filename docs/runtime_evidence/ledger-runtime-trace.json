@@ -1,0 +1,289 @@
+{
+  "summary": {
+    "status": "completed",
+    "dataset": "data\\sample\\uci_online_retail_payments.json",
+    "dataset_sha256": "e44f08621f53c82f07975715e8580df9498dbbf223d94245bfab6473a67d5093",
+    "first_seed": {
+      "payments_created": 18,
+      "refunds_created": 1,
+      "withdrawals_created": 1,
+      "reconciliation_matched": 2,
+      "reconciliation_mismatches": 0,
+      "total_payment_minor_units": 468109
+    },
+    "second_seed_idempotent": {
+      "payments_created": 0,
+      "refunds_created": 0,
+      "withdrawals_created": 0,
+      "reconciliation_matched": 2,
+      "reconciliation_mismatches": 0
+    },
+    "journal_count": 20,
+    "balanced_journals": 20,
+    "wallet_count": 2,
+    "wallets": [
+      {
+        "id": "4ded130d-8ff4-44a3-b41b-839b162d9301",
+        "currency": "GBP",
+        "ledger_balance": 50465,
+        "available_balance": 50465,
+        "reserved_balance": 0
+      },
+      {
+        "id": "454a6d0f-ac0d-4939-a48c-42b4113d26a8",
+        "currency": "GBP",
+        "ledger_balance": 467644,
+        "available_balance": 374116,
+        "reserved_balance": 93528
+      }
+    ],
+    "latest_reconciliation": {
+      "status": "completed",
+      "matched_count": 2,
+      "mismatch_count": 0
+    },
+    "claim_boundary": "This is a local SQLite development run over the committed UCI Online Retail sample; it does not claim regulated payment processing, production PostgreSQL concurrency, or a real provider settlement."
+  },
+  "journals": [
+    {
+      "id": "dd892870-d5ad-4d16-93fe-8eea04dc16a6",
+      "reference": "UCI-CUSTOMER-FUNDING",
+      "source_type": "deposit",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 518109,
+      "credits": 518109,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "456a27bc-8780-4cbe-98ed-60928893399e",
+      "reference": "UCI-536365",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 13912,
+      "credits": 13912,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "d65be0f4-35c0-462f-9011-0dfa00e5c5c2",
+      "reference": "UCI-536366",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 2220,
+      "credits": 2220,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "37c8b319-cf9f-4a5f-a2c2-0dec1afced3d",
+      "reference": "UCI-536367",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 27873,
+      "credits": 27873,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "d805fd47-1210-4844-ba67-6e95edaaa8e2",
+      "reference": "UCI-536368",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 7005,
+      "credits": 7005,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "f85a0975-c747-40da-a902-3d490feedccb",
+      "reference": "UCI-536369",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 1785,
+      "credits": 1785,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "18b6af08-7032-466f-bd5e-211bfd8b0700",
+      "reference": "UCI-536370",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 85586,
+      "credits": 85586,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "80016b05-5212-4561-b1ee-af5af5b6dd8a",
+      "reference": "UCI-536371",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 20400,
+      "credits": 20400,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "070bd764-7302-48c8-b7e8-85819340a71d",
+      "reference": "UCI-536372",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 2220,
+      "credits": 2220,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "c97c0965-932f-4600-abd5-122c89fdf9a3",
+      "reference": "UCI-536373",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 25986,
+      "credits": 25986,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "8d7cc76a-4df0-4346-8764-73afa71eeb67",
+      "reference": "UCI-536374",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 35040,
+      "credits": 35040,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "fe0b3d40-73c3-477b-83df-edc56e148593",
+      "reference": "UCI-536375",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 25986,
+      "credits": 25986,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "1d897c06-633d-405b-8bbf-a5205ac3b8e5",
+      "reference": "UCI-536376",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 32880,
+      "credits": 32880,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "06fe1356-984c-4e69-82f1-a1a7475f696c",
+      "reference": "UCI-536377",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 2220,
+      "credits": 2220,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "507672f6-4b29-45da-9a3a-73f6eb22077f",
+      "reference": "UCI-536378",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 44498,
+      "credits": 44498,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "71a9dc12-128c-4afa-aaa4-56bd352a7e7b",
+      "reference": "UCI-536381",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 44998,
+      "credits": 44998,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "b820a562-5b59-4c3e-b859-ff76ade9106b",
+      "reference": "UCI-536380",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 3480,
+      "credits": 3480,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "e0fc5559-c2aa-4f27-b86d-c68fff58a14d",
+      "reference": "UCI-536382",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 43060,
+      "credits": 43060,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "8b74e16b-fbd3-4954-84a6-aedc9af89644",
+      "reference": "UCI-536384",
+      "source_type": "payment",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 48960,
+      "credits": 48960,
+      "posting_count": 2,
+      "balanced": true
+    },
+    {
+      "id": "0b405e42-cee4-4153-9a51-9e17158370dc",
+      "reference": "REF-UCI-536381-2d92e8e6",
+      "source_type": "refund",
+      "currency": "GBP",
+      "entry_kind": "primary",
+      "status": "posted",
+      "debits": 465,
+      "credits": 465,
+      "posting_count": 2,
+      "balanced": true
+    }
+  ]
+}

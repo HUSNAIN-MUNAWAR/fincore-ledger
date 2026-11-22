@@ -1,0 +1,70 @@
+{
+  "status": "completed",
+  "dataset": "data\\sample\\uci_online_retail_payments.json",
+  "dataset_sha256": "e44f08621f53c82f07975715e8580df9498dbbf223d94245bfab6473a67d5093",
+  "first_seed": {
+    "payments_created": 18,
+    "refunds_created": 1,
+    "withdrawals_created": 1,
+    "reconciliation_matched": 2,
+    "reconciliation_mismatches": 0,
+    "total_payment_minor_units": 468109
+  },
+  "second_seed_idempotent": {
+    "payments_created": 0,
+    "refunds_created": 0,
+    "withdrawals_created": 0,
+    "reconciliation_matched": 2,
+    "reconciliation_mismatches": 0
+  },
+  "journal_count": 20,
+  "balanced_journals": 20,
+  "wallet_count": 2,
+  "wallets": [
+    {
+      "id": "4ded130d-8ff4-44a3-b41b-839b162d9301",
+      "currency": "GBP",
+      "ledger_balance": 50465,
+      "available_balance": 50465,
+      "reserved_balance": 0
+    },
+    {
+      "id": "454a6d0f-ac0d-4939-a48c-42b4113d26a8",
+      "currency": "GBP",
+      "ledger_balance": 467644,
+      "available_balance": 374116,
+      "reserved_balance": 93528
+    }
+  ],
+  "latest_reconciliation": {
+    "status": "completed",
+    "matched_count": 2,
+    "mismatch_count": 0
+  },
+  "claim_boundary": "This is a local SQLite development run over the committed UCI Online Retail sample; it does not claim regulated payment processing, production PostgreSQL concurrency, or a real provider settlement.",
+  "video": {
+    "width": 1280,
+    "height": 720,
+    "fps": 2.0,
+    "rendered_frames": 20,
+    "decoded_frames": 20
+  },
+  "artifacts": {
+    "ledger-runtime-trace.json": {
+      "bytes": 7954,
+      "sha256": "2287b083f42c7944d164862328029bcfc51c02f776c637ce1569e00b4bd2705c"
+    },
+    "ledger-runtime-trace.csv": {
+      "bytes": 1999,
+      "sha256": "28376d2119cfc48dce8d7bfd26d1f59d08df4d7661866a8b22552073829d3fcb"
+    },
+    "ledger-runtime-trace.mp4": {
+      "bytes": 326201,
+      "sha256": "4f0f90a1a26edb2209b8ca6c41e24275c6c430ab0e3a409f8d973d57a806fd25"
+    },
+    "ledger-runtime-trace-poster.jpg": {
+      "bytes": 74218,
+      "sha256": "fff99a60681bd87ae561b8e025728da07419db1dd2a4f881f09c74fbdc475b62"
+    }
+  }
+}
