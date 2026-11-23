@@ -12,6 +12,5 @@ These screenshots were captured from the real FinCore Ledger application running
 - `reconciliation-review.png` - completed reconciliation run with matched wallet projections.
 - `webhook-operations.png` - merchant webhook endpoint registration and delivery/API panels.
 - `api-openapi-schema.png` - raw OpenAPI schema endpoint from the running FastAPI service.
-- `api-openapi-docs.png` - same API schema capture retained as a compatibility filename for earlier documentation drafts.
 
 The images intentionally omit browser chrome, local filesystem paths, real credentials, and one-time API/webhook secrets.
